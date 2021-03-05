@@ -30,14 +30,25 @@ strong {
 #input:focus {
     outline: none;
 }
-#form > button {
-    background: #333;
+
+.chatButton {
+    background-color: #333;
     border: none;
     padding: 0 1rem;
     margin: 0.25rem;
     border-radius: 3px;
     outline: none;
     color: #fff;
+    height: 2rem;
+}
+
+.boldButton {
+    font-weight: bold;
+    font-family: serif;
+}
+
+.colorButton {
+    padding: 0.1rem 0.5rem;
 }
 
 #messages {
