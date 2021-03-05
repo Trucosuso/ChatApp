@@ -13,6 +13,7 @@ io.on("connection", (socket) => {
             user: username,
             message: "has joined the chat"
         });
+        socket.removeAllListeners("user registered");
     });
 
     socket.on("disconnect", () => {
@@ -20,6 +21,7 @@ io.on("connection", (socket) => {
     });
 
     socket.on("chat message", (msg) => {
+        msg.user = socket.username;
         io.emit("chat message", msg);
     });
 });

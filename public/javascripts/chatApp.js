@@ -68,7 +68,6 @@ chatForm.addEventListener("submit", function (e) {
     e.preventDefault();
     if (chatInput.value) {
         socket.emit("chat message", {
-            user: username,
             bold: textBold,
             color: textColor,
             message: chatInput.value
