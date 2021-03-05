@@ -19,6 +19,7 @@ loginForm.addEventListener("submit", function (e) {
     if (loginInput.value) {
         username = loginInput.value;
         loginInput.value = "";
+        socket.emit("user registered", username);
         chat.style.display = "initial";
         login.style.display = "none";
         chatInput.focus();
