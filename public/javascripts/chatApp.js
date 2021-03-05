@@ -7,6 +7,9 @@ var username = "";
 /** @type {Boolean} True if text is bold */
 var textBold = false;
 
+/** @type {Stirng} New message color */
+var textColor = "";
+
 /* Store DOM elements to work with them */
 var chat = document.getElementById("chat");
 var login = document.getElementById("login");
@@ -40,6 +43,12 @@ boldButton.addEventListener("click", (e) => {
     }
 });
 
+/* Change textColor when a new color is selected */
+var colorInput = document.getElementById("colorInput");
+colorInput.addEventListener("change", () => {
+    textColor = colorInput.value;
+    chatInput.style.color = textColor;
+});
 
 /** Event to store username and change view to chat */
 loginForm.addEventListener("submit", function (e) {
@@ -61,6 +70,7 @@ chatForm.addEventListener("submit", function (e) {
         socket.emit("chat message", {
             user: username,
             bold: textBold,
+            color: textColor,
             message: chatInput.value
         });
         chatInput.value = "";
@@ -80,6 +90,7 @@ socket.on("chat message", function (msg) {
     }
     
     messageText.textContent = msg.message;
+    messageText.style.color = msg.color;
 
     item.append(messageUsername, messageText);
 
