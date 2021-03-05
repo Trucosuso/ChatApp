@@ -7,33 +7,21 @@
 </head>
 
 <body>
-    <ul id="messages"></ul>
-    <form id="form" action="">
-        <input id="input" autocomplete="off" /><button>Send</button>
-    </form>
+    <section id="login">
+        <form id="loginForm" action="">
+            <label for="loginInput">Enter a username</label>
+            <input id="loginInput" placeholder="Username" type="text">
+            <button>Login</button>
+        </form>
+    </section>
+    <section id="chat" style="display: none;">
+        <ul id="messages"></ul>
+        <form id="form" action="">
+            <input id="input" autocomplete="off" /><button>Send</button>
+        </form>
+    </section>
     <script src="/socket.io/socket.io.js"></script>
-    <script>
-        var socket = io();
-
-        var messages = document.getElementById('messages');
-        var form = document.getElementById('form');
-        var input = document.getElementById('input');
-
-        form.addEventListener('submit', function (e) {
-            e.preventDefault();
-            if (input.value) {
-                socket.emit('chat message', input.value);
-                input.value = '';
-            }
-        });
-
-        socket.on('chat message', function (msg) {
-            var item = document.createElement('li');
-            item.textContent = msg;
-            messages.appendChild(item);
-            window.scrollTo(0, document.body.scrollHeight);
-        });
-    </script>
+    <script src="/javascripts/chatApp.js"></script>
 </body>
 
 </html>
